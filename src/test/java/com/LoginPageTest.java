@@ -16,23 +16,19 @@ public class LoginPageTest extends BaseTest {
     @Test(priority = 1)
     @Description("Check key fields are displayed")
     void checkKeyFieldsAreDisplayed() {
-        //LoginPage loginPage = new LoginPage();
         BasePage.checkFieldsAreDisplayed(loginPage.getKeyFields());
     }
 
     @Test(priority = 3)
     @Description("Check success login")
     void loginPositiveTest() {
-       // LoginPage loginPage = new LoginPage();
         loginPage.login("test@protei.ru", "test");
-       // AddUserPage addUserPage = new AddUserPage();
         BasePage.checkFieldsAreDisplayed(addUserPage.getAddUserPageKeyFields());
     }
 
     @Test(priority = 2, dataProvider = "Invalid Login Data Test")
     @Description("Check error message")
     void loginNegativeTest(String login, String password, String errorMessage) {
-       // LoginPage loginPage = new LoginPage();
         loginPage.login(login, password);
         String actualErrorMessage = loginPage.getEmailFormatErrorText();
         assertEquals(actualErrorMessage, errorMessage,

@@ -2,7 +2,6 @@ package com;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import java.util.List;
 import static org.testng.Assert.assertTrue;
 

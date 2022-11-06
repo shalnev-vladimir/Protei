@@ -1,6 +1,5 @@
 package com;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import jdk.jfr.Description;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -9,15 +8,10 @@ import java.util.List;
 import static com.Gender.FEMALE;
 import static com.Gender.MALE;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.sleep;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class AddUserPageTest extends BaseTest {
-
-//    LoginPage loginPage = new LoginPage();
-//    AddUserPage addUserPage = new AddUserPage();
-//    AddUserPage.ModalWindow modalWindow = new AddUserPage.ModalWindow();
 
     @BeforeClass
     @Description("Open page, login and moving to AddUserPage")
@@ -28,7 +22,6 @@ public class AddUserPageTest extends BaseTest {
     @BeforeMethod
     @Description("Login and moving to AddUserPage")
     void login() {
-        //LoginPage loginPage = new LoginPage();
         loginPage.login("test@protei.ru", "test");
     }
 
@@ -50,21 +43,15 @@ public class AddUserPageTest extends BaseTest {
         List<String> actualNewRecordValue = addUserPage.newRecordValues();
         assertEquals(actualNewRecordValue, expectedNewRecordValue,
                 "Expected record value is " + expectedNewRecordValue + ". But actual is " + actualNewRecordValue);
-//        System.out.println(actualNewRecordValue);
-//        System.out.println(expectedNewRecordValue);
-//        System.out.println(" ");
     }
 
     @Test
     @Description("Checking that it is possible to add a new record in case you provide valid data")
     void isNewRecordAdded() {
-        //int actualSize = 0;
         for (int i = 0; i < 3; i++) {
-            //AddUserPage addUserPage = new AddUserPage();
             addUserPage.setEmailInput(RandomStringUtils.randomAlphabetic(10) + "@v.r");
             addUserPage.setNameInput(RandomStringUtils.randomAscii(10));
             TestHelper.clickButton(addUserPage.getAddButton());
-            //AddUserPage.ModalWindow modalWindow = new AddUserPage.ModalWindow();
             assertTrue(modalWindow.isModalWindowDisplayed());
             TestHelper.clickButton(modalWindow.getOkButton());
         }
@@ -86,7 +73,6 @@ public class AddUserPageTest extends BaseTest {
     @Test(dataProvider = "Invalid Emails Or Names")
     @Description("Checking texts of alert messages")
     void checkAlertMessages(String email, String name, String errorMessage) throws Exception {
-        //AddUserPage addUserPage = new AddUserPage();
         addUserPage.setEmailInput(email);
         addUserPage.setNameInput(name);
         TestHelper.clickButton(addUserPage.getAddButton());
@@ -106,7 +92,6 @@ public class AddUserPageTest extends BaseTest {
     @Test(priority = 1)
     @Description("Check key fields are displayed")
     void checkKeyFieldsAreDisplayed() {
-        //AddUserPage addUserPage = new AddUserPage();
         BasePage.checkFieldsAreDisplayed(addUserPage.getKeyFields());
     }
 
@@ -131,7 +116,6 @@ public class AddUserPageTest extends BaseTest {
     @Test
     @Description("Checking if it is possible to choose gender from drop down menu")
     void checkSelectGender() {
-        //AddUserPage addUserPage = new AddUserPage();
         TestHelper.select(addUserPage.getGenderDropDownField(), FEMALE.gender);
         String shouldBeFemaleGenderSelected = addUserPage.getGenderDropDownFieldSelectedText();
         assertEquals(shouldBeFemaleGenderSelected, FEMALE.gender);
@@ -143,7 +127,6 @@ public class AddUserPageTest extends BaseTest {
     @Test
     @Description("Check columns titles")
     void checkColumnsTitlesTest() {
-        //AddUserPage addUserPage = new AddUserPage();
         List<String> actualColumnsTitlesTexts = addUserPage.getColumnsTitlesTexts();
         List<String> expectedColumnsTitlesTexts = List.of("E-Mail", "Имя", "Пол", "Выбор 1", "Выбор 2");
         assertEquals(actualColumnsTitlesTexts, expectedColumnsTitlesTexts, "Incorrect columns titles");

@@ -1,15 +1,10 @@
 package com;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import com.FieldType.*;
-import com.FieldInfo.*;
 import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
-import static org.openqa.selenium.By.xpath;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
@@ -64,15 +59,5 @@ public class TestHelper {
             checkboxLabel.click();
         }
         assertFalse(checkboxLabel.isSelected());
-    }
-
-    @Step("set '{field.name}' to '{value}'")
-    private void setFieldValue(FieldType type, String value, SelenideElement field) {
-        switch(type) {
-            case TEXT_FIELD:
-                fillTextField(field, value);
-                break;
-        }
-
     }
 }

@@ -3,12 +3,9 @@ package com;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.checked;
@@ -171,16 +168,6 @@ public class AddUserPage implements BasePage {
         }
         return value;
     }
-
-//    @Step("Get E-mail input text")
-//    public String getEmailInputValueText() {
-//        return emailInput.text();
-//    }
-//
-//    @Step("Get name input text")
-//    public String getNameInputValueText() {
-//        return nameInput.text();
-//    }
 
     public static class ModalWindow {
 
