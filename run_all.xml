@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Run All Test Suites" parallel="tests" thread-count="2">
+<test name="Add New Record Page Test">
+    <classes>
+        <class name="com.AddUserPageTest" />
+    </classes>
+</test>
+<test name="Login Page Test">
+    <classes>
+        <class name="com.LoginPageTest" />
+    </classes>
+</test>
+</suite>

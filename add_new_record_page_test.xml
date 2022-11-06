@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Add New Record Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="Add New User Page Test">
+        <classes >
+            <class name="com.AddUserPage"/>
+        </classes>
+    </test>
+</suite>
